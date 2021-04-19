@@ -45,20 +45,20 @@ Run the "msi" installer file.
 Construct a TestDir which has two or more subdirectories:
 
  - TestDir
-   o Disk0
+   * Disk0
      * Track0.mp3
      * Track1.mp3
-   o Disk1
+   * Disk1
      * Track0.mp3
      * Track1.mp3
 
 The application will translate this organization into:
 
  - Testdir
-   o Prfx-01-001.mp3
-   o Prfx-01-002.mp3
-   O Prfx-02-001.mp3
-   o Prfx-02-002.mp3
+   * Prfx-01-001.mp3
+   * Prfx-01-002.mp3
+   * Prfx-02-001.mp3
+   * Prfx-02-002.mp3
 
 ## Authors
 
