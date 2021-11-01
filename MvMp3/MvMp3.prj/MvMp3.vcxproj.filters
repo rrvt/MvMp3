@@ -36,9 +36,6 @@
     <ClInclude Include="MvMp3View.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Library\Extras\About.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Library\Extras\ExtraResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -49,6 +46,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PrefixDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Library\Extras\AboutDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,9 +68,6 @@
     <ClCompile Include="MvMp3View.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Library\Extras\About.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PrefixDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -91,19 +91,13 @@
     <None Include="res\MvMp3.rc2">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\..\Library\Extras\About.rc2">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="..\..\Library\Extras\Options.rc2">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="res\Toolbar.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="res\Toolbar02.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="res\Toolbar03.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Library\Extras\AboutDlg.rc2">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

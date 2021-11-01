@@ -21,9 +21,9 @@ public:
   virtual BOOL InitInstance();
   virtual int  ExitInstance();
 
-          MvMp3Doc*  doc()  {return (MvMp3Doc*)  CApp::getDoc();}
-          MvMp3View* view() {return (MvMp3View*) CApp::getView();}
-          MainFrame*       mainFrm() {return (MainFrame*) m_pMainWnd;}
+          MvMp3Doc*  doc()     {return (MvMp3Doc*)  CApp::getDoc();}
+          MvMp3View* view()    {return (MvMp3View*) CApp::getView();}
+          MainFrame* mainFrm() {return (MainFrame*) m_pMainWnd;}
 
   DECLARE_MESSAGE_MAP()
 
@@ -35,7 +35,7 @@ public:
 
 extern MvMp3 theApp;
 
-inline void         invalidate() {theApp.invalidate();}
-inline MvMp3Doc*  doc()  {return theApp.doc();}
-inline MvMp3View* view() {return theApp.view();}
+inline void       invalidate() {theApp.invalidate();}
+inline MvMp3Doc*  doc()        {return theApp.doc();}
+inline MvMp3View* view()       {return theApp.view();}
 

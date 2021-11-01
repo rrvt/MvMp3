@@ -60,6 +60,13 @@ The application will translate this organization into:
    * Prfx-02-001.mp3
    * Prfx-02-002.mp3
 
+## Updates
+
+### Update 10/31/21
+
+Changed Resources (i.e. xxx.rc data) access so that it will work with a dll.  Changed the logic in the
+About Box code.  Some other library changes.  Some corresponding changes in the application.
+
 ## Authors
 
 Robert R. Van Tuyl, K6RWY

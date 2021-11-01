@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "MvMp3.h"
-#include "About.h"
+#include "AboutDlg.h"
 #include "ExtraResource.h"
 #include "IniFile.h"
 #include "MainFrame.h"
@@ -107,5 +107,5 @@ String topic = m_pszHelpFilePath; topic += _T(">Introduction");
   }
 
 
-void MvMp3::OnAppAbout() {CAboutDlg aboutDlg; aboutDlg.DoModal();}
+void MvMp3::OnAppAbout() {AboutDlg aboutDlg; aboutDlg.DoModal();}
 
