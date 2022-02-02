@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MvMp3Help", "..\MvMp3.hlp\MvMp3Help.vcxproj", "{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MvMp3", "..\MvMp3.prj\MvMp3.vcxproj", "{8D69DD76-8853-410A-BADD-5CC777001DF8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D} = {D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}
@@ -12,8 +10,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MvMp3", "..\MvMp3.prj\MvMp3
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Library", "..\..\Library\Library.prj\Library.vcxproj", "{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D} = {D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}
+	EndProjectSection
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Installer", "..\Installer\Installer.wixproj", "{DA994FCD-34CA-4566-9373-B64DA87AEF22}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MvMp3Hlp", "..\MvMp3.hlp\MvMp3Hlp.vcxproj", "{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MvMp3Wix", "..\MvMp3.wix\MvMp3Wix.wixproj", "{DA994FCD-34CA-4566-9373-B64DA87AEF22}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8D69DD76-8853-410A-BADD-5CC777001DF8} = {8D69DD76-8853-410A-BADD-5CC777001DF8}
 		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D} = {D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}
@@ -26,10 +29,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}.Debug|Win32.Build.0 = Debug|Win32
-		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}.Release|Win32.ActiveCfg = Release|Win32
-		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}.Release|Win32.Build.0 = Release|Win32
 		{8D69DD76-8853-410A-BADD-5CC777001DF8}.Debug|Win32.ActiveCfg = Debug|Win32
 		{8D69DD76-8853-410A-BADD-5CC777001DF8}.Debug|Win32.Build.0 = Debug|Win32
 		{8D69DD76-8853-410A-BADD-5CC777001DF8}.Release|Win32.ActiveCfg = Release|Win32
@@ -38,8 +37,11 @@ Global
 		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Debug|Win32.Build.0 = Debug|Win32
 		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Release|Win32.ActiveCfg = Release|Win32
 		{CF57F3EC-D3DB-4469-8519-3F9D73785D9B}.Release|Win32.Build.0 = Release|Win32
+		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}.Debug|Win32.Build.0 = Debug|Win32
+		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}.Release|Win32.ActiveCfg = Release|Win32
+		{D5B2DDD9-0071-461A-B4BF-6FC754E0A82D}.Release|Win32.Build.0 = Release|Win32
 		{DA994FCD-34CA-4566-9373-B64DA87AEF22}.Debug|Win32.ActiveCfg = Debug|x86
-		{DA994FCD-34CA-4566-9373-B64DA87AEF22}.Debug|Win32.Build.0 = Debug|x86
 		{DA994FCD-34CA-4566-9373-B64DA87AEF22}.Release|Win32.ActiveCfg = Release|x86
 		{DA994FCD-34CA-4566-9373-B64DA87AEF22}.Release|Win32.Build.0 = Release|x86
 	EndGlobalSection
