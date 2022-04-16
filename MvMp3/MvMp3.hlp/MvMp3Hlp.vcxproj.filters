@@ -16,9 +16,6 @@
     <None Include="makefile">
       <Filter>Help Files</Filter>
     </None>
-    <None Include="Operations.htm">
-      <Filter>Help Files</Filter>
-    </None>
     <None Include="App.css">
       <Filter>Help Files</Filter>
     </None>

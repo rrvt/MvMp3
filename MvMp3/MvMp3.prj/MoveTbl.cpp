@@ -20,7 +20,7 @@ bool      last;
   for (rslt = ff.FindFile(pth), last = !ff.FindNextFile(); rslt; last = !ff.FindNextFile()) {
     if (ff.IsDots()) continue;
 
-    String    p = ff.GetFilePath();
+    String    p = ff.GetFilePath().GetBuffer();
     MoveDatum dtm;   dtm.path = p;
 
     if (ff.IsDirectory()) {findFiles(p); dtm.directory = true;}
