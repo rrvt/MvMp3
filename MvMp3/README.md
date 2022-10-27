@@ -62,6 +62,11 @@ The application will translate this organization into:
 
 ## Updates
 
+### Update 10/26/22
+
+Added logic to start window in the same position and size as when it exited the last time.  Update the
+toolbar background.
+
 ### Update 8/3/22
 
 Minor Library update.
