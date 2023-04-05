@@ -10,11 +10,7 @@ class MvMp3Doc;
 
 
 class MvMp3View : public CScrView {
-
-NotePadRpt dspNote;
-NotePadRpt prtNote;
-
-protected: // create from serialization only
+protected:
 
   MvMp3View() noexcept;
 
@@ -26,11 +22,11 @@ public:
 
   virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
-  virtual void OnPrepareDC(CDC* pDC, CPrintInfo* pInfo = NULL);
-  virtual void onPrepareOutput(bool printing);
+  virtual void onPreparePrinting(CPrintInfo* info) {prtNote.onPreparePrinting(info);}
+  virtual void onBeginPrinting();
+  virtual void onDisplayOutput();
 
-  virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
-  virtual void printFooter(Device& dev, int pageNo);
+  virtual void printFooter(DevBase& dev, int pageNo);
   virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 
   MvMp3Doc* GetDocument() const;
@@ -46,6 +42,8 @@ public:
 
   DECLARE_MESSAGE_MAP()
 
+  afx_msg void onOptions();
+  afx_msg void onRptOrietn();
   afx_msg void OnSetFocus(CWnd* pOldWnd);
   };
 

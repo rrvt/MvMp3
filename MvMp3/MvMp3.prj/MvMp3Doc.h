@@ -8,7 +8,7 @@
 #include "TBEditBox.h"
 
 
-enum DataSource {NotePadSrc, StoreSrc, FontSrc};
+enum DataSource {NotePadSrc};
 
 
 class MvMp3Doc : public CDoc {

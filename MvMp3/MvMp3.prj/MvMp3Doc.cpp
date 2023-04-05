@@ -3,13 +3,12 @@
 
 #include "stdafx.h"
 #include "MvMp3Doc.h"
-#include "ExtraResource.h"
+#include "ResourceExtra.h"
 #include "filename.h"
 #include "GetPathDlg.h"
 #include "MessageBox.h"
 #include "MoveTbl.h"
 #include "NotePad.h"
-#include "Options.h"
 #include "Resource.h"
 #include "MvMp3.h"
 #include "MvMp3View.h"
@@ -26,7 +25,6 @@ IMPLEMENT_DYNCREATE(MvMp3Doc, CDoc)
 BEGIN_MESSAGE_MAP(MvMp3Doc, CDoc)
   ON_COMMAND(ID_NewMove,     &onNewMove)
   ON_COMMAND(ID_RenameFiles, &onRenameFiles)
-  ON_COMMAND(ID_Options,     &OnOptions)
 END_MESSAGE_MAP()
 
 
@@ -38,11 +36,6 @@ MvMp3Doc::~MvMp3Doc() { }
 
 
 BOOL MvMp3Doc::OnNewDocument() {return CDocument::OnNewDocument();}
-
-
-void MvMp3Doc::OnOptions() {options(view());  view()->setOrientation(options.orient);}
-
-
 
 
 void MvMp3Doc::onNewMove() {
@@ -74,8 +67,8 @@ void MvMp3Doc::serialize(Archive& ar) {
 
   else
     switch(dataSource) {
-      case FontSrc  :
-      default       : return;
+      case NotePadSrc :
+      default         : return;
       }
   }
 

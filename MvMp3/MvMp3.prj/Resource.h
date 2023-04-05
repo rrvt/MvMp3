@@ -3,8 +3,6 @@
 // Used by MvMp3.rc
 
 
-#include "ExtraResource.h"
-
 #define IDR_MAINFRAME                   100
 #define IDR_ToolBarImages               101
 #define IDR_PopupMenu                   102
@@ -17,8 +15,10 @@
 #define ID_File_New                     400
 #define ID_File_Open                    401
 #define ID_RenameFiles                  402
-#define ID_Help                         404
-#define ID_NewMove                      405
+#define ID_Options                      403
+#define ID_App_About                    404
+#define ID_Help                         405
+#define ID_NewMove                      406
 
 // Next default values for new objects
 //

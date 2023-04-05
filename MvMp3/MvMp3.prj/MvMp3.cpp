@@ -4,11 +4,10 @@
 #include "stdafx.h"
 #include "MvMp3.h"
 #include "AboutDlg.h"
-#include "ExtraResource.h"
+#include "ResourceExtra.h"
 #include "IniFile.h"
 #include "MainFrame.h"
 #include "NotePad.h"
-#include "Options.h"
 #include "MvMp3Doc.h"
 #include "MvMp3View.h"
 
@@ -20,7 +19,6 @@ IniFile     iniFile;
 // MvMp3
 
 BEGIN_MESSAGE_MAP(MvMp3, CWinAppEx)
-  ON_COMMAND(ID_FILE_PRINT_SETUP, &OnFilePrintSetup)
   ON_COMMAND(ID_Help,             &OnHelp)
   ON_COMMAND(ID_App_About,        &OnAppAbout)
 END_MESSAGE_MAP()
@@ -70,23 +68,7 @@ BOOL MvMp3::InitInstance() {
 
   view()->setFont(_T("Arial"), 12.0);
 
-  options.load();    view()->setOrientation(options.orient);
-
   m_pMainWnd->ShowWindow(SW_SHOW);   m_pMainWnd->UpdateWindow();   return TRUE;
-  }
-
-
-
-void MvMp3::OnFilePrintSetup() {
-PrtrOrient orient;
-
-  view()->setPrntrOrient(getDevMode());
-
-    CWinApp::OnFilePrintSetup();
-
-  orient = view()->getPrntrOrient(getDevMode());
-
-  options.setOrient(orient);   view()->setOrientation(options.orient);
   }
 
 
