@@ -62,6 +62,10 @@ The application will translate this organization into:
 
 ## Updates
 
+### Update 4/18/24
+
+Improved the way Toolbars and Window Position and size are handled.
+
 ### Update 2/17/24
 
 Reorganized the Library so that it compiles once into Debug and Release directories under the Library

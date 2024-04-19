@@ -145,6 +145,7 @@
     <ClInclude Include="MvMp3.h" />
     <ClInclude Include="MvMp3Doc.h" />
     <ClInclude Include="MvMp3View.h" />
+    <ClInclude Include="MyToolBar.h" />
     <ClInclude Include="PrefixDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="MvMp3.cpp" />
     <ClCompile Include="MvMp3Doc.cpp" />
     <ClCompile Include="MvMp3View.cpp" />
+    <ClCompile Include="MyToolBar.cpp" />
     <ClCompile Include="PrefixDlg.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="..\..\Library\Extras\RptOrientDlgOne.cpp" />

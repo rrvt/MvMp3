@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "MainFrame.h"
-#include "resource.h"
+#include "Resource.h"
 
 
 // MainFrame
@@ -26,11 +26,10 @@ static UINT indicators[] = {
   ID_INDICATOR_SCRL,
   };
 
-// MainFrame construction/destruction
 
 MainFrame::MainFrame() noexcept : isInitialized(false) { }
 
-MainFrame::~MainFrame() { }
+MainFrame::~MainFrame() {winPos.~WinPos();}
 
 
 BOOL MainFrame::PreCreateWindow(CREATESTRUCT& cs) {
@@ -46,20 +45,19 @@ CRect winRect;
 
   if (CFrameWndEx::OnCreate(lpCreateStruct) == -1) return -1;
 
-  if (!m_wndMenuBar.Create(this)) {TRACE0("Failed to create menubar\n"); return -1;}
+  if (!menuBar.Create(this)) {TRACE0("Failed to create menubar\n"); return -1;}
+
   CMFCPopupMenu::SetForceMenuFocus(FALSE);
 
-  if (!toolBar.CreateEx(this, TBSTYLE_FLAT,
-                                        WS_CHILD | WS_VISIBLE | CBRS_TOP | CBRS_TOOLTIPS | CBRS_FLYBY) ||
-      !toolBar.LoadToolBar(IDR_MAINFRAME, 0, 0, TRUE)) {TRACE0("Failed to create toolbar\n"); return -1;}
+  if (!toolBar.create(this, IDR_MAINFRAME)) {TRACE0("Failed to create toolbar\n"); return -1;}
 
-  if (!m_wndStatusBar.Create(this)) {TRACE0("Failed to create status bar\n"); return -1;}
+  if (!statusBar.Create(this)) {TRACE0("Failed to create status bar\n"); return -1;}
 
-  m_wndStatusBar.SetIndicators(indicators, noElements(indicators));  //sizeof(indicators)/sizeof(UINT)
+  statusBar.SetIndicators(indicators, noElements(indicators));  //sizeof(indicators)/sizeof(UINT)
 
   GetWindowRect(&winRect);   winPos.initialPos(this, winRect);
 
-  DockPane(&m_wndMenuBar);   DockPane(&toolBar);
+  DockPane(&menuBar);   DockPane(&toolBar);
 
   CMFCVisualManager::SetDefaultManager(RUNTIME_CLASS(CMFCVisualManagerWindows7));
                                                                          // Affects look of toolbar, etc.
@@ -72,17 +70,14 @@ void MainFrame::OnMove(int x, int y)
 
 
 void MainFrame::OnSize(UINT nType, int cx, int cy) {
-CRect winRect;
+CRect r;
 
-  CFrameWndEx::OnSize(nType, cx, cy);
+  GetWindowRect(&r);
 
-  if (!isInitialized) return;
+  if (!isInitialized) {winPos.setInvBdrs(r, cx, cy);   return;}
 
-  GetWindowRect(&winRect);   winPos.set(winRect);
+  winPos.set(cx, cy);   CFrameWndEx::OnSize(nType, cx, cy);
   }
-
-
-void MainFrame::setupToolBar() { }
 
 
 // MainFrame message handlers
@@ -90,11 +85,13 @@ void MainFrame::setupToolBar() { }
 afx_msg LRESULT MainFrame::OnResetToolBar(WPARAM wParam, LPARAM lParam) {setupToolBar();  return 0;}
 
 
+void MainFrame::setupToolBar() { }
+
+
 // MainFrame diagnostics
 
 #ifdef _DEBUG
-void MainFrame::AssertValid() const {CFrameWndEx::AssertValid();}
-
+void MainFrame::AssertValid() const          {CFrameWndEx::AssertValid();}
 void MainFrame::Dump(CDumpContext& dc) const {CFrameWndEx::Dump(dc);}
 #endif //_DEBUG
 

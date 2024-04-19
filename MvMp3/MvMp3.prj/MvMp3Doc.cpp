@@ -12,7 +12,7 @@
 #include "Resource.h"
 #include "MvMp3.h"
 #include "MvMp3View.h"
-#include "ToolBar.h"
+#include "MyToolBar.h"
 
 
 //static int getDisk(String name, int k);
