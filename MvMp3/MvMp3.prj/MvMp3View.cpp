@@ -63,8 +63,8 @@ void MvMp3View::onDisplayOutput() {dspNote.display(*this);}
 
 
 // The footer is injected into the printed output, so the output goes directly to the device.
-// The output streaming functions are very similar to NotePad's streaming functions so it should not
-// be a great hardship to construct a footer.
+// The output streaming functions are very similar to NotePad's streaming functions so it should
+// not be a great hardship to construct a footer.
 
 void MvMp3View::printFooter(DevBase& dev, int pageNo) {
   switch(doc()->dataSrc()) {
@@ -97,12 +97,9 @@ void MvMp3View::OnSetFocus(CWnd* pOldWnd) {
 // MvMp3View diagnostics
 
 #ifdef _DEBUG
-
-void MvMp3View::AssertValid() const {CScrollView::AssertValid();}
-
+void MvMp3View::AssertValid() const          {CScrollView::AssertValid();}
 void MvMp3View::Dump(CDumpContext& dc) const {CScrollView::Dump(dc);}
-                                             // non-debug version is inline
+                                                                    // non-debug version is inline
 MvMp3Doc* MvMp3View::GetDocument() const
-  {ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(MvMp3Doc))); return (MvMp3Doc*)m_pDocument;}
-
+           {ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(MvMp3Doc))); return (MvMp3Doc*)m_pDocument;}
 #endif //_DEBUG

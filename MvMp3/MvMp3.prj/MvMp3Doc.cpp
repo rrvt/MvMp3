@@ -44,7 +44,7 @@ String path;
   notePad.clear();
 
   if (getDirPathDlg(TEXT("Set Directory"), path))
-                {moveTbl.setTarget(path + _T("\\"));   moveTbl.findFiles(path);   moveTbl.display();}
+              {moveTbl.setTarget(path + _T("\\"));   moveTbl.findFiles(path);   moveTbl.display();}
   display(NotePadSrc);
   }
 
@@ -76,14 +76,7 @@ void MvMp3Doc::serialize(Archive& ar) {
 // MvMp3Doc diagnostics
 
 #ifdef _DEBUG
-void MvMp3Doc::AssertValid() const
-{
-  CDocument::AssertValid();
-}
-
-void MvMp3Doc::Dump(CDumpContext& dc) const
-{
-  CDocument::Dump(dc);
-}
+void MvMp3Doc::AssertValid() const          {CDocument::AssertValid();}
+void MvMp3Doc::Dump(CDumpContext& dc) const {CDocument::Dump(dc);}
 #endif //_DEBUG
 

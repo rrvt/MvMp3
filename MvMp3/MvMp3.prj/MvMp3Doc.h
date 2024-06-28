@@ -34,12 +34,6 @@ public:
   virtual void Dump(CDumpContext& dc) const;
 #endif
 
-private:
-
-//  bool findFiles(TCchar* path);
-
-// Generated message map functions
-
 protected:
 
   DECLARE_MESSAGE_MAP()

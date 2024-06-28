@@ -49,7 +49,6 @@ public:
 
 
 #ifndef _DEBUG  // debug version in MvMp3View.cpp
-inline MvMp3Doc* MvMp3View::GetDocument() const
-   { return reinterpret_cast<MvMp3Doc*>(m_pDocument); }
+inline MvMp3Doc* MvMp3View::GetDocument() const {return reinterpret_cast<MvMp3Doc*>(m_pDocument);}
 #endif
 

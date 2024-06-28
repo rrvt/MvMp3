@@ -25,5 +25,3 @@ void PrefixDlg::DoDataExchange(CDataExchange* pDX) {
 BEGIN_MESSAGE_MAP(PrefixDlg, CDialog)
 END_MESSAGE_MAP()
 
-
-// PrefixDlg message handlers

@@ -2,82 +2,82 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
 <Product Id="*" UpgradeCode="79BDE11C-E3BC-42C8-82A9-9360E016FF32" Language="1033"
-         Manufacturer="Bob -- K6RWY" Name="MvMp3"
-         Version="!(bind.fileVersion.MvMp3.cmp)"
-         >
+                Manufacturer="Bob -- K6RWY" Name="MvMp3"
+                Version="!(bind.fileVersion.MvMp3.cmp)"
+                >
 
   <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"
-           Manufacturer="Bob -- K6RWY" Description="Installs MvMp3"
-           Comments="Copyright (c) Bob -- K6RWY"
-           />
+                Manufacturer="Bob -- K6RWY" Description="Installs MvMp3"
+                Comments="Copyright (c) Bob -- K6RWY"
+                />
 
   <MajorUpgrade Schedule="afterInstallInitialize"
                 AllowDowngrades="no"   IgnoreRemoveFailure="no"   AllowSameVersionUpgrades="no"
-                DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+                DowngradeErrorMessage="A newer version of [ProductName] is already installed."
+                />
 
   <MediaTemplate EmbedCab="yes" />
 
-  <UI Id="My_InstallDir.ui">
-    <UIRef Id="WixUI_InstallDir" />
-    <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg">
-      NOT Installed
-    </Publish>
-    <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">
-      1
-    </Publish>
-  </UI>
+  <WixVariable Id="WixUILicenseRtf"
+                              Value="$(var.SolutionDir)..\..\Library\License\MITLicenseFile.rtf" />
+  <UI Id="My_InstallDir.ui"><UIRef Id="WixUI_InstallDir" /></UI>
 
   <WixVariable Id="WixUIDialogBmp" Value="C:\Program Files (x86)\WixApp\dialog.bmp"/>
   <WixVariable Id="WixUIBannerBmp" Value="C:\Program Files (x86)\WixApp\banner.bmp"/>
 
   <Icon     Id="MvMp3Icon.ico" SourceFile="$(var.SolutionDir)..\MvMp3.prj\res\MvMp3.ico"/>
+  <Icon     Id="MITLicense_Icon.exe"
+                              SourceFile="$(var.SolutionDir)..\..\Library\License\MITLicense.ico"/>
   <Property Id="ARPPRODUCTICON"  Value="MvMp3Icon.ico" />
 
   <Feature Id="ProductFeatures" Title="Main Product" Level="1" >
     <ComponentGroupRef Id="MvMp3.ftr"/>
-    <ComponentGroupRef Id="UninstallMvMp3.ftr"/>
+    <ComponentGroupRef Id="License.ftr"/>
+    <ComponentGroupRef Id="Uninstall_MvMp3.ftr"/>
   </Feature>
 </Product>
 
 <Fragment>
-<ComponentGroup Id="MvMp3.ftr">
-  <ComponentRef Id="MvMp3.cmp"/>
-  <ComponentRef Id="Help.cmp"/>
-</ComponentGroup>
-<ComponentGroup Id="UninstallMvMp3.ftr">
-  <ComponentRef Id="UninstallMvMp3.cmp"/>
-</ComponentGroup>
+  <ComponentGroup Id="MvMp3.ftr">
+    <ComponentRef Id="MvMp3.cmp"/>
+    <ComponentRef Id="Help.cmp"/>
+  </ComponentGroup>
+  <ComponentGroup Id="License.ftr">
+    <ComponentRef Id="MIT_License.cmp"/>
+  </ComponentGroup>
+  <ComponentGroup Id="Uninstall_MvMp3.ftr">
+    <ComponentRef Id="Uninstall_MvMp3.cmp"/>
+  </ComponentGroup>
 </Fragment>
 
 <!--Directory structure-->
 <Fragment>
   <Directory Id="TARGETDIR" Name="SourceDir">
     <Directory Id="ProgramFilesFolder">
-      <Directory Id="MvMp3.pff" Name="MvMp3" />
+      <Directory Id="MVMP3.PFF" Name="MvMp3" />
     </Directory>
 
-    <Directory Id="ProgramMenuFolder" Name="StartMenu">
+    <Directory Id="ProgramMenuFolder">
       <Directory Id="MvMp3.pmf" Name="MvMp3" />
     </Directory>
 
-    <Directory Id="DesktopFolder" Name="Desktop" />
+    <Directory Id="DesktopFolder" />
   </Directory>
 
   <Property Id="ApplicationFolderName" Value="MvMp3" />
-  <Property Id="WIXUI_INSTALLDIR"      Value="MvMp3.pff"/>
+  <Property Id="WIXUI_INSTALLDIR"      Value="MVMP3.PFF"/>
   <Property Id="WixAppFolder"          Value="WixPerMachineFolder" />
 </Fragment>
 
 <Fragment>
-
-  <Component Id="MvMp3.cmp"  Guid="9920369F-5D76-4FBB-B35A-76967136A9F3" Directory="MvMp3.pff">
+  <Component Id="MvMp3.cmp" Guid="9920369F-5D76-4FBB-B35A-76967136A9F3" Directory="MVMP3.PFF">
     <File Id="MvMp3.cmp" Source="$(var.SolutionDir)..\Release\MvMp3.exe" KeyPath="yes"/>
 
     <Shortcut Id               = "MvMp3.shc"
               Name             = "MvMp3"
               Advertise        = "yes"
               Directory        = "MvMp3.pmf"
-              WorkingDirectory = "MvMp3.pff"
+              WorkingDirectory = "MVMP3.PFF"
               Icon             = "MvMp3Icon.ico"
               />
 
@@ -85,21 +85,35 @@
               Name             = "MvMp3"
               Advertise        = "yes"
               Directory        = "DesktopFolder"
-              WorkingDirectory = "MvMp3.pff"
+              WorkingDirectory = "MVMP3.PFF"
               Icon             = "MvMp3Icon.ico"
               />
   </Component>
 
-  <Component Id="Help.cmp"  Guid="CA21DABB-8119-4F1D-8F82-6BBD94E7DCB4" Directory="MvMp3.pff">
+  <Component Id="Help.cmp" Guid="CA21DABB-8119-4F1D-8F82-6BBD94E7DCB4" Directory="MVMP3.PFF">
     <File Id="Help.cmp" Source="$(var.SolutionDir)..\Release\MvMp3.chm" KeyPath="yes"/>
   </Component>
-
 </Fragment>
 
 <Fragment>
+  <Component Id="MIT_License.cmp" Guid="179E9360-B804-40EF-9087-F3C4E74EF1DF"
+                                                                             Directory="MVMP3.PFF">
+    <File Id="MIT_License.cmp"
+                Source="$(var.SolutionDir)..\..\Library\License\MITLicenseFile.rtf" KeyPath="yes"/>
 
-  <Component Id="UninstallMvMp3.cmp"  Guid="435BDC92-977E-4D44-9678-821A97C42B67"
-                                                                                Directory="MvMp3.pmf">
+    <Shortcut Id               = "MITLicense.shc"
+              Name             = "MIT License"
+              Advertise        = "yes"
+              Directory        = "MvMp3.pmf"
+              WorkingDirectory = "MVMP3.PFF"
+              Icon             = "MITLicense_Icon.exe"
+              />
+  </Component>
+</Fragment>
+
+<Fragment>
+  <Component Id="Uninstall_MvMp3.cmp" Guid="713B8B3B-E026-4BB6-8F54-D7C07A64F6AF"
+                                                                             Directory="MvMp3.pmf">
 
     <Shortcut Id               = "UninstallMvMp3.shc"
               Name             = "Uninstall MvMp3"
@@ -109,10 +123,8 @@
               Icon             = "MvMp3Icon.ico"
               />
     <RemoveFolder Id="MvMp3.uni" Directory="MvMp3.pmf" On="uninstall"/>
-    <RegistryValue Root="HKCU" Key="Software\UninstallMvMp3.cmp" Name="installed"
-                   Type="integer" Value="1" KeyPath="yes"/>
+    <RegistryValue Root="HKCU" Key="Software\Uninstall_MvMp3.cmp" Name="installed"
+                                                           Type="integer" Value="1" KeyPath="yes"/>
   </Component>
-
 </Fragment>
-
 </Wix>

@@ -62,6 +62,10 @@ The application will translate this organization into:
 
 ## Updates
 
+### Update 6/27/24
+
+Add MIT License to installation.
+
 ### Update 6/13/24
 
 Fix WinPos.

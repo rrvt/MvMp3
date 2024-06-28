@@ -61,7 +61,7 @@ String     prefix = prfx;
 
     if (dtm->directory) {
       if (_trmdir(dtm->path))
-                         {String msg = _T("Unable to delete directory ") + dtm->path;   messageBox(msg);}
+                   {String msg = _T("Unable to delete directory ") + dtm->path;   messageBox(msg);}
       i++; j = 0; continue;
       }
 
