@@ -3,7 +3,7 @@
 
 #pragma once
 #include "CScrView.h"
-#include "NotePadRpt.h"
+#include "ReportNtPd.h"
 
 
 class MvMp3Doc;
@@ -18,18 +18,24 @@ protected:
 
 public:
 
-  virtual ~MvMp3View() { }
+  virtual           ~MvMp3View() { }
 
-  virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+  virtual void       initNoteOrietn() { }
+  virtual void       saveNoteOrietn() { }
+  virtual void       initRptOrietn()  { }
+  virtual void       saveRptOrietn()  { }
+  virtual PrtrOrient getOrientation() {return prtNote.prtrOrietn;}
 
-  virtual void onPreparePrinting(CPrintInfo* info) {prtNote.onPreparePrinting(info);}
-  virtual void onBeginPrinting();
-  virtual void onDisplayOutput();
+  virtual BOOL       PreCreateWindow(CREATESTRUCT& cs);
 
-  virtual void printFooter(DevBase& dev, int pageNo);
-  virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+  virtual void       onDisplayOutput();
 
-  MvMp3Doc* GetDocument() const;
+  virtual void       onPreparePrinting(CPrintInfo* info) {prtNote.onPreparePrinting(info);}
+  virtual void       onBeginPrinting();
+  virtual void       printFooter(DevStream& dev, int pageNo);
+  virtual void       OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+
+  MvMp3Doc*          GetDocument() const;
 
 public:
 

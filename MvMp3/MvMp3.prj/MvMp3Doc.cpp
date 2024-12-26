@@ -61,7 +61,7 @@ void MvMp3Doc::serialize(Archive& ar) {
 
   if (ar.isStoring())
     switch(dataSource) {
-      case NotePadSrc : notePad.archive(ar); return;
+      case NotePadSrc : ar << notePad; return;
       default         : return;
       }
 
