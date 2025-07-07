@@ -62,6 +62,10 @@ The application will translate this organization into:
 
 ## Updates
 
+### Update 7/7/25
+
+Improve memory leak debugging.  Factored IniFile in three classes.
+
 ### Update 12/25/24
 
 Split the library into DocLib and Library where DocLib supports the MFC Document/Library App

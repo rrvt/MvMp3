@@ -7,7 +7,7 @@ MvMp3.chm : *.htm MvMp3.hhp MvMp3.hhc App.css
 Clean.cln    :
   @echo "Cleaning"
   cd $(MAKEDIR)
-  del /F MvMp3.chm
+  if exist MvMp3.chm del /F MvMp3.chm
 
 
 Release/MvMp3.chm : MvMp3.chm
@@ -16,7 +16,7 @@ Release/MvMp3.chm : MvMp3.chm
 
 Release/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Release
-  del MvMp3.chm
+  if exist MvMp3.chm del /F MvMp3.chm
   cd $(MAKEDIR)
 
 
@@ -26,7 +26,7 @@ Debug/MvMp3.chm : MvMp3.chm
 
 Debug/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Debug
-  del MvMp3.chm
+  if exist MvMp3.chm del /F MvMp3.chm
   cd $(MAKEDIR)
 
 

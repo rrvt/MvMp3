@@ -8,7 +8,6 @@
 #include "PrefixDlg.h"
 
 
-MoveTbl moveTbl;
 
 
 bool MoveTbl::findFiles(TCchar* path) {

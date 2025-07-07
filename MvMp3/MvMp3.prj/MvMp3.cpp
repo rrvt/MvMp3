@@ -5,15 +5,17 @@
 #include "MvMp3.h"
 #include "AboutDlg.h"
 #include "ResourceExtra.h"
-#include "IniFile.h"
+#include "IniFileEx.h"
 #include "MainFrame.h"
+#include "MoveTbl.h"
 #include "NotePad.h"
 #include "MvMp3Doc.h"
 #include "MvMp3View.h"
 
 
-MvMp3 theApp;                       // The one and only MvMp3 object
-IniFile     iniFile;
+MvMp3     theApp;                       // The one and only MvMp3 object
+IniFileEx iniFile(theApp);
+MoveTbl   moveTbl;
 
 
 // MvMp3
@@ -30,7 +32,7 @@ BOOL MvMp3::InitInstance() {
 
   CWinAppEx::InitInstance();
 
-  iniFile.setAppDataPath(m_pszHelpFilePath, *this);
+  iniFile.setAppDataPath(m_pszHelpFilePath);
 
   notePad.clear();
 
@@ -72,14 +74,7 @@ BOOL MvMp3::InitInstance() {
   }
 
 
-int MvMp3::ExitInstance() {
-
-#ifdef DebugMemoryLeaks
-  _CrtDumpMemoryLeaks();
-#endif
-
-  return CApp::ExitInstance();
-  }
+int MvMp3::ExitInstance() {return CApp::ExitInstance();}
 
 
 void MvMp3::OnHelp() {
