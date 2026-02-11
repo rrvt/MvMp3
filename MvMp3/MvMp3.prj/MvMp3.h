@@ -34,7 +34,7 @@ public:
 
 extern MvMp3 theApp;
 
-inline void       invalidate() {theApp.invalidate();}
+
 inline MvMp3Doc*  doc()        {return theApp.doc();}
 inline MvMp3View* view()       {return theApp.view();}
 

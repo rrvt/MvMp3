@@ -4,7 +4,6 @@
 #include "pch.h"
 #include "TBCbxMenu.h"
 #include "CbxItem.h"
-#include "ToolBarDim.h"
 
 
 TBCbxMenu& TBCbxMenu::install(int idr, TCchar* caption) {
@@ -44,8 +43,8 @@ void TBCbxMenu::setWidth() {
 
   if (!getActual()) return;
 
-  ((TBCbxMenu*)actual)->m_iWidth  = toolBarDim.getHoriz(maxChars) * percent / 100 + 20;
-  }
+  ((TBCbxMenu*)actual)->m_iWidth  = getWidth();
+  }                                           //toolBarDim.getHoriz(maxChars) * percent / 100 + 20;
 
 
 void TBCbxMenu::setHeight() {
@@ -55,7 +54,7 @@ int maxHeight = (toolBarDim.height/25 - 3) * 25;
 
   if (!getActual()) return;
 
-  count = ((TBCbxMenu*)actual)->GetCount();   if (!count) return;
+  count = (int) ((TBCbxMenu*)actual)->GetCount();   if (!count) return;
 
   pixels = count * 25;   pixels = pixels < 150 ? 150 : pixels > maxHeight ? maxHeight : pixels;
 
@@ -68,7 +67,7 @@ TBCbxMenu& TBCbxMenu::finInstall(TCchar* caption) {
 
   this->caption = caption;   setMaxChars(caption);
 
-  m_iWidth = toolBarDim.getHoriz(maxChars) * percent / 100 + 20;
+  m_iWidth = getWidth();                    //toolBarDim.getHoriz(maxChars) * percent / 100 + 20;
 
   m_dwStyle = CBS_DROPDOWNLIST | WS_VSCROLL | BS_VCENTER;   SetFlatMode(true);
 
@@ -88,7 +87,7 @@ uint TBCbxMenu::getCmdId() {
 CMFCToolBarComboBoxButton* cbxBtn = GetByCmd(id);   if (!cbxBtn) return 0;
 int                        i      = cbxBtn->GetCurSel();
 
-  return i >= 0 ? cbxBtn->GetItemData(i) : 0;
+  return i >= 0 ? (uint) cbxBtn->GetItemData(i) : 0;
   }
 
 

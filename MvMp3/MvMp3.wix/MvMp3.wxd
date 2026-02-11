@@ -8,7 +8,7 @@ NPaths=4
 DefKey0=Icon
 Icon.Path=D:\Sources\Library\License\
 DefKey1=MvMp3.ftr
-MvMp3.ftr.Path=D:\Sources\MvMp3\Release\
+MvMp3.ftr.Path=D:\Sources\MvMp3\Release.Win32\
 DefKey2=License.ftr
 License.ftr.Path=D:\Sources\Library\License\
 DefKey3=License
@@ -27,12 +27,15 @@ IconPath=D:\Sources\Library\License\MITLicense.ico
 ProductName=MvMp3
 Company=Bob -- K6RWY
 WixName=MvMp3Installer
-WixVersion=1.1.1.0
+WixVersion=1.1.5.0
 UpgradeCode=79BDE11C-E3BC-42C8-82A9-9360E016FF32
 SaveVerAllowed=0
 LicenseRequired=1
 LicensePath=D:\Sources\Library\License\MITLicenseFile.rtf
 IconID=MvMp3
+IsWin10=0
+IsWin7=0
+IsWinXP=0
 [PFFDirectories]
 NoDirectories=1
 [PFFDirDesc00]
@@ -60,7 +63,7 @@ CurSel=MvMp3
 NoComponents=2
 [Ftr00Cmp00]
 ID=MvMp3
-Path=D:\Sources\MvMp3\Release\MvMp3.exe
+Path=D:\Sources\MvMp3\Release.Win32\MvMp3.exe
 Guid=9920369F-5D76-4FBB-B35A-76967136A9F3
 IconID=MvMp3
 IsStartMenu=1
@@ -68,7 +71,7 @@ IsDeskTop=1
 IsVersionAvail=1
 [Ftr00Cmp01]
 ID=Help
-Path=D:\Sources\MvMp3\Release\MvMp3.chm
+Path=D:\Sources\MvMp3\Release.Win32\MvMp3.chm
 Guid=CA21DABB-8119-4F1D-8F82-6BBD94E7DCB4
 [Ftr01]
 FeatureID=License

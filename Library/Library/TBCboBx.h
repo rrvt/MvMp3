@@ -2,6 +2,7 @@
 
 
 #pragma once
+#include "ToolBarDim.h"
 
 struct CbxItem;
 
@@ -33,7 +34,7 @@ String caption;
   void        setCaption(TCchar* caption) {this->caption = caption;   setCaption();}
   bool        addItem(TCchar* txt, int val);
   bool        addItemSorted(TCchar* txt, int val);
-  uint        getCount() {return actual ? actual->GetCount() : 0;}
+  uint        getCount() {return actual ? (uint) actual->GetCount() : 0;}
   void        setWidth();
   void        setHeight();
 
@@ -49,11 +50,13 @@ String caption;
 
 private:
 
-  bool        getActual() {if (!actual) actual = GetByCmd(id);   return actual != 0;}
+  bool        getActual();
+  int         getWidth() {return toolBarDim.getHoriz(maxChars) * percent / 100 + 20;}
+
   String      findNext(int index);
 
   bool        add(TCchar* txt, int data);
   TBCboBx*    finInstall(TCchar* caption);
-  void        setMaxChars(TCchar* txt) {int t;  t = _tcslen(txt);  if (t > maxChars) maxChars = t;}
+  void        setMaxChars(TCchar* txt) {int t;  t = (int) _tcslen(txt);  if (t > maxChars) maxChars = t;}
   };
 

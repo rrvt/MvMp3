@@ -2,21 +2,21 @@
 // Cryptography API : Next Generation (CNG)
 
 
-#include "pch.h"
+#include "LibGlobals.h"
 #include "CNGblock.h"
 #include "Random.h"
 
 
 CNGblock& CNGblock::operator= (TCchar*  tc) {
 
-  if (alloc((_tcsclen(tc) + 1) * sizeof(Tchar))) memcpy_s(p, n, tc, n);
+  if (alloc((int) ((_tcsclen(tc) + 1) * sizeof(Tchar)))) memcpy_s(p, n, tc, n);
 
   return *this;
   }
 
 
 bool CNGblock::setKey(TCchar* key) {
-ulong lng = _tcsclen(key);
+ulong lng = (int) _tcsclen(key);
 ulong hash;
 ulong extra;
 ulong i;

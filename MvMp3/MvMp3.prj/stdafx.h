@@ -57,3 +57,5 @@ typedef basic_string<Tchar> tstring;
 #include "NewAllocator.h"
 #include <afxcontrolbars.h>
 
+#define DocView
+

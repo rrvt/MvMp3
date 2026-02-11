@@ -4,13 +4,12 @@
 #include "pch.h"
 #include "TBCboBx.h"
 #include "CbxItem.h"
-#include "ToolBarDim.h"
 
 #include "MessageBox.h"
 
 
 TBCboBx::TBCboBx(uint myId) :
-              CMFCToolBarComboBoxButton(myId, -1), id(myId), maxChars(0), percent(1), actual(0) { }
+            CMFCToolBarComboBoxButton(myId, -1), id(myId), maxChars(0), percent(100), actual(0) { }
 
 
 TBCboBx* TBCboBx::install(int noChars) {maxChars = noChars;   return finInstall(_T(""));}
@@ -80,8 +79,14 @@ int    index;
   }
 
 
+bool TBCboBx::getActual() {
+  if (!actual) actual = GetByCmd(id);   return actual != 0;
+  }
+
+
+
 String TBCboBx::findNext(int index) {
-int     n   = actual->GetCount();
+int     n   = (int) actual->GetCount();
 String  tgt = actual->GetItem(index);
 int     lng = tgt.length();
 int     i;
@@ -102,7 +107,7 @@ void TBCboBx::setWidth() {
 
   if (!getActual()) return;
 
-  ((TBCboBx*)actual)->m_iWidth  = toolBarDim.getHoriz(maxChars) * percent / 100 + 20;
+  ((TBCboBx*)actual)->m_iWidth  = getWidth(); //toolBarDim.getHoriz(maxChars) * percent / 100 + 20;
   }
 
 
@@ -113,7 +118,7 @@ int maxHeight = (toolBarDim.height/25 - 3) * 25;
 
   if (!getActual()) return;
 
-  count = ((TBCboBx*)actual)->GetCount();   if (!count) return;
+  count = (int) ((TBCboBx*)actual)->GetCount();   if (!count) return;
 
   pixels = count * 25;   pixels = pixels < 150 ? 150 : pixels > maxHeight ? maxHeight : pixels;
 
@@ -174,7 +179,7 @@ TBCboBx* TBCboBx::finInstall(TCchar* caption) {
 
   this->caption = caption;   setMaxChars(caption);
 
-  m_iWidth  = toolBarDim.getHoriz(maxChars) + 20;
+  m_iWidth  = getWidth();     //toolBarDim.getHoriz(maxChars) + 20;
 
   m_dwStyle =  CBS_DROPDOWNLIST | WS_VSCROLL;   SetFlatMode(true);
 

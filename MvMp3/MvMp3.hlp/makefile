@@ -10,29 +10,17 @@ Clean.cln    :
   if exist MvMp3.chm del /F MvMp3.chm
 
 
-Release/MvMp3.chm : MvMp3.chm
-  copy $(MAKEDIR)\MvMp3.chm  $(MAKEDIR)\..\Release\MvMp3.chm
+$(TgtFolder)/MvMp3.chm : MvMp3.chm
+  copy $(MAKEDIR)\MvMp3.chm  $(MAKEDIR)\..\$(TgtFolder)\MvMp3.chm
 
 
-Release/Clean.cln    : Clean.cln
-  cd $(MAKEDIR)\..\Release
+$(TgtFolder)/Clean.cln    : Clean.cln
+  cd $(MAKEDIR)\..\$(TgtFolder)
   if exist MvMp3.chm del /F MvMp3.chm
   cd $(MAKEDIR)
 
 
-Debug/MvMp3.chm : MvMp3.chm
-  copy $(MAKEDIR)\MvMp3.chm  $(MAKEDIR)\..\Debug\MvMp3.chm
+$(TgtFolder)/Rebuild.rbd : $(TgtFolder)/Clean.cln $(TgtFolder)/MvMp3.chm
 
-
-Debug/Clean.cln    : Clean.cln
-  cd $(MAKEDIR)\..\Debug
-  if exist MvMp3.chm del /F MvMp3.chm
-  cd $(MAKEDIR)
-
-
-Release/Rebuild.rbd : Release/Clean.cln Release/MvMp3.chm
-
-
-Debug/Rebuild.rbd   : Debug/Clean.cln Debug/MvMp3.chm
 
 
